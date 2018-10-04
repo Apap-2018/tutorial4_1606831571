@@ -45,5 +45,23 @@ public class CarController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/car/update/{dealerId}/{carId}", method = RequestMethod.GET)
+	private String add(@PathVariable(value = "dealerId") Long dealerId,@PathVariable(value = "carId") Long carId, Model model) {
+		CarModel car = new CarModel();
+		DealerModel dealer = dealerService.getDealerDetailById(dealerId).get();
+		car.setDealer(dealer);
+		car.setId(carId);
+		model.addAttribute("car", car);
+		return "updateCar";
+	}
+	
+	
+	
+	@RequestMapping(value = "/car/update/{carId}", method = RequestMethod.POST)
+	private String update(@ModelAttribute CarModel car,@PathVariable(value = "carId") Long carId, Model model) {
+		carService.updateCar(carId, car.getAmount(), car.getBrand(), car.getPrice(), car.getType());
+		return "updateCarBerhasil";
+	}
+	
 
 }

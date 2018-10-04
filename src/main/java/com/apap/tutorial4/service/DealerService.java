@@ -9,5 +9,6 @@ public interface DealerService {
 	void addDealer(DealerModel dealer);
 	void deleteDealer(long dealerId);
 	List<DealerModel> getAll();
+	void updateDealer(Long id, String alamat, String noTelp);
 
 }

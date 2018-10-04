@@ -27,11 +27,11 @@ public class CarModel implements Serializable {
 
 	@NotNull
 	@Column(name = "price", nullable = false)
-	private Long price;
+	private String price;
 	
 	@NotNull
 	@Column(name = "amount", nullable = false)
-	private Integer amount;
+	private String amount;
 	
 	@ManyToOne(fetch = FetchType.LAZY )
 	@JoinColumn(name = "dealer_id", referencedColumnName = "id", nullable = false)
@@ -63,19 +63,19 @@ public class CarModel implements Serializable {
 		this.type = type;
 	}
 
-	public Long getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
-	public Integer getAmount() {
+	public String getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Integer amount) {
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
 

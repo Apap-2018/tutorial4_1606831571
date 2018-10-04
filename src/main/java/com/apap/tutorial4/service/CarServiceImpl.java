@@ -22,7 +22,12 @@ public class CarServiceImpl implements CarService{
 		// TODO Auto-generated method stub
 		carDb.deleteById(carId);
 	}
-
+	public void updateCar(Long id, String amount, String brand, String price, String type) {
+		carDb.getOne(id).setAmount(amount);
+		carDb.getOne(id).setBrand(brand);
+		carDb.getOne(id).setPrice(price);
+		carDb.getOne(id).setType(type);
+	}
 	
 	
 	

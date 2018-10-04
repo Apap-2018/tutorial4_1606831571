@@ -32,6 +32,11 @@ public class DealerServiceImpl implements DealerService {
 	public List<DealerModel> getAll() {
 		return dealerDb.findAll();
 	}
+	public void updateDealer(Long id,String alamat, String noTelp) {
+		dealerDb.findById(id).get().setAlamat(alamat);
+		dealerDb.findById(id).get().setNoTelp(noTelp);
+	}	
+	
 	
 	
 }

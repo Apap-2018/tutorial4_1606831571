@@ -59,10 +59,15 @@ public class DealerController {
 
 	
 	
-	class SortCar implements Comparator<CarModel>{
-		public int compare(CarModel a, CarModel b) {
-			return (int) (a.getPrice() - b.getPrice());
-		}
+	class SortCar implements Comparator<CarModel> 
+	{ 
+	    public int compare(CarModel a, CarModel b) 
+	    { 
+	    	Integer priceA = Integer.parseInt(a.getPrice());
+	    	Integer priceB = Integer.parseInt(b.getPrice());
+	    	
+	        return priceA - priceB; 
+	    }
 	}
 
 	@RequestMapping(value = "/dealer/delete/{dealerId}", method = RequestMethod.GET)
@@ -79,6 +84,16 @@ public class DealerController {
 		
 	}
 	
+	@RequestMapping(value = "/dealer/update/{dealerId}", method = RequestMethod.GET)
+	private String updateDealer(@PathVariable(value = "dealerId") Long dealerId, Model model) {
+		model.addAttribute("dealer", new DealerModel());
+		return "updateDealer";
+}
+	@RequestMapping(value = "/dealer/update/{dealerId}", method = RequestMethod.POST)
+	private String updateDealer(@PathVariable(value = "dealerId") Long dealerId,@ModelAttribute DealerModel dealer,Model model) {
+		dealerService.updateDealer(dealerId, dealer.getAlamat(), dealer.getNoTelp());
+		return "updateTest";
+}
 	
 	
 	
