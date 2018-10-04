@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+<title>View All</title>
+</head>
+<body>
+<div th:each="dealer : ${listDealer}">
+<div th:each="car : ${dealer.getListCar()}">
+<h3 th:text="${car.brand}"></h3>
+<h3 th:text="${car.amount}"></h3>
+<h3 th:text="${car.price}"></h3>>
+</div>
+</div>
+</body>
+</html>
